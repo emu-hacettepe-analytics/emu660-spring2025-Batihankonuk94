@@ -40,4 +40,4 @@ R, Quarto, Git, Python
 
 # CV
 
-docs/BK_CV.pdf
+[Batıhan_Konuk_CV](docs/BK_CV.pdf)
