@@ -38,4 +38,6 @@ sidebar: false
 
 R, Quarto, Git, Python
 
-# Hobbies
+# CV
+
+docs/BK_CV.pdf
