@@ -118,6 +118,11 @@ mean_random <- mean(na_replaced_random)
 print(mean_random) #Mean after replacing NA with random values
 sd_random <- sd(na_replaced_random)
 print(sd_random) #Standard Deviation after replacing NA with random values
+
+"Yorumlar"
+
+"Bu veri seti için eksik verilerin rastgele mevcut değerlerle doldurulması yöntemi daha uygun görünmektedir. Bunun nedeni, bu yöntemin veri setinin ortalama ve standart sapma değerlerini koruyarak orijinal veri yapısının bozulmasını en aza indirmesidir. Öte yandan, medyan ile doldurma yöntemi veri setinin varyansını azaltarak veri dağılımını değiştirmiş ve olası bilgi kaybına neden olmuştur."
+
 ```
 
 
