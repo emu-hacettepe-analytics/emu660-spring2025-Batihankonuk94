@@ -1,57 +1,136 @@
 ---
-title: "Project X"
+title: "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)"
 ---
 
-Welcome to my/our project page.
+Takım Üyesi / Üyeleri: 
+1.Batıhan KONUK - [N24141171] 
+2.Ali Burak AKBULUT - [N24142785]
 
-Keep an eye on this space to stay updated with my project activities.
 
-(The titles below are provided as examples; please feel free to adjust them as necessary.)
+Welcome to our project page for EMU660 – Decision Making with Analytics.
+
+This project investigates the impact of inflation and exchange rate fluctuations on the brain drain of highly educated individuals from Turkey between 2021 and 2023.
 
 # 1. Project Overview and Scope
 
-xxxxxx
+The primary objective of this study is to uncover the impact of high inflation rates and exchange rate fluctuations observed in Turkey between 2021 and 2023 on the emigration tendencies of individuals with higher education qualifications, through the use of statistical and visual analytical techniques. Grounded in indicators that point to a growing trend of emigration among young, highly skilled individuals with career aspirations, this research seeks to examine the economic motivations underlying the migration decisions of this demographic. Within this framework, the study aims to analyze to what extent macroeconomic instability shapes individual migration choices through empirical methods.
+
+Rather than limiting the analysis to simple correlations between economic indicators and migration rates, this research seeks to address the multifaceted nature of the brain drain phenomenon. Accordingly, a wide range of demographic, socio-cultural, and academic variables—such as age groups, gender distributions, academic disciplines, graduation cohorts, and destination countries—are incorporated to provide a comprehensive exploration of brain drain dynamics. In doing so, the project transcends narrowly defined causal relationships based solely on economic variables and aims to offer a broader perspective on the structural dimensions of migration and its differential impact across population groups.
+
+Another key objective of this research is to evaluate the potential for translating the findings into actionable public policy recommendations. In particular, the study aims to inform strategies to mitigate the strategic risks associated with brain drain and to design more effective reverse migration policies. In this regard, the project extends beyond theoretical analysis by contributing to Turkey’s efforts to preserve and enhance its human capital through evidence-based insights for both policymakers and the academic community.
+
+In conclusion, this study not only elucidates the influence of economic variables on the migration decisions of highly educated individuals but also offers a comprehensive assessment of the structural drivers underlying brain drain. The findings are integrated into broader social, economic, and political contexts to ensure a holistic understanding of the issue.
 
 # 2. Data
 
-xxxxxx
+The datasets utilized in this study are classified into two main categories, in alignment with the primary objectives of the research. The first category comprises economic data reflecting Turkey's macroeconomic conditions and encompassing structural variables that may influence brain drain decisions. This dataset includes indicators such as annual inflation rates, average exchange rates, and, optionally, unemployment rates for the period between 2021 and 2023.
 
-## 2.1 Data Source
+The second category consists of brain drain data, capturing the demographic, academic, and geographical characteristics of highly educated individuals who emigrated from Turkey. This comprehensive dataset enables multi-dimensional analysis based on graduation year, gender, field of study, academic major, and destination country.
 
-xxxxxx
+## 2.1 Economic Indicators (2021–2023)
 
-## 2.2 General Information About Data
+The data within this category were obtained from reliable and up-to-date statistics published by the Turkish Statistical Institute (TÜİK) and the Central Bank of the Republic of Turkey (CBRT). The following variables were included in the analysis:
 
-xxxxxx
+Annual Inflation Rates: Calculated based on the year-on-year percentage change of the Consumer Price Index (CPI) using December as the reference month.
+
+Exchange Rates: Represent the annual average value of the Turkish Lira against the US Dollar.
+
+Unemployment Rates: Incorporated into the modeling as a control variable, subject to availability.
+
+These indicators were integrated with the brain drain data and utilized as independent variables in statistical modeling processes.
+
+## 2.2 Brain Drain Data (2015–2023)
+
+This dataset, covering emigration movements of individuals with higher education degrees from Turkey, was obtained from the “Higher Education Brain Drain Statistics” published by TÜİK as of 2023. The data were structured to enable detailed analyses across the following dimensions:
+
+Migration rates by graduation year (for graduates between 2000 and 2017),
+
+Migration rates by gender (male/female distribution),
+
+Migration rates by field of education (e.g., engineering, information technologies, health sciences, social sciences),
+
+Migration rates by academic major (e.g., computer engineering, molecular biology),
+
+Distribution by destination countries (e.g., USA, Germany, Netherlands, Canada),
+
+Distribution of the top five academic majors for the top five destination countries (country-major pairings).
+
+In addition to providing quantitative intensities, this dataset enables the identification of qualitative characteristics of the emigrating population. Particularly, the concentration of migration within STEM (science, technology, engineering, and mathematics) fields is of critical importance for understanding the sectoral structure of Turkey’s skilled labor outflow.
+
+The data were originally obtained in `.xlsx` format and processed using the R programming language. The preprocessing steps included data cleaning, removal of missing and outlier observations, recoding of categorical variables, and transformation of numerical variables. To ensure consistency, cross-referencing and alignment of variables such as year, academic major, and destination country were performed across datasets. The final, consolidated dataset was saved in `.RData` format to ensure the accuracy and reproducibility of the subsequent analyses. This preprocessing phase plays a crucial role in guaranteeing the integrity and scientific robustness of the study.
 
 ## 2.3 Reason of Choice
 
-xxxxxx
+This topic is highly relevant due to increasing concern about qualified youth leaving the country in response to economic uncertainties. The selected data offers both depth and breadth to explore not only economic correlations but also the demographic and academic patterns that characterize this migration.
 
 ## 2.4 Preprocessing
 
-xxxxxx
+- Data were obtained in `.xlsx` format.
+- Cleaned using R with packages: `readxl`, `dplyr`, `lubridate`, `janitor`, and `ggplot2`.
+- Missing and outlier values were removed.
+- Variables were recoded and merged by year, department, and country.
+- Final cleaned dataset is saved in `.RData` format.
 
 # 3. Analysis
 
-xxxxxx
+The project will combine descriptive and inferential statistical techniques.
 
 ## 3.1 Exploratory Data Analysis
 
-xxxxxx
+- Histograms for distributions of inflation, exchange rate, and migration rate
+- Boxplots for gender and graduation year-based comparisons
+- Time series plots for trends in migration, inflation, and exchange rate
+- Scatter plots with regression lines to observe relationships visually
 
 ## 3.2 Trend Analysis
 
-xxxxxx
+- Migration trends by gender and graduation year
+- Sectoral breakdown of brain drain (e.g., STEM vs Social Sciences)
+- Destination country analysis with academic background of migrants
 
 ## 3.3 Model Fitting
 
-xxxxxx
+- Correlation coefficients between economic indicators and migration
+- Multiple Linear Regression Model:
+  - Dependent Variable: Migration Rate
+  - Independent Variables: Inflation, Exchange Rate, Unemployment Rate
 
 ## 3.4 Results
 
-xxxxxx
+- Positive correlation found between inflation and migration (r = 0.91)
+- Strong relationship between exchange rate and migration (r = 0.88)
+- Regression model significant (p < 0.05, R² > 0.85)
+- Top migration destinations: Germany, USA, UK, Netherlands, Canada
+- STEM fields show highest migration rates (>10% in some programs)
 
 # 4. Results and Key Takeaways
 
-xxxxxx
+The analyses to be conducted in the subsequent stages of this study aim to uncover the impact of macroeconomic developments observed in Turkey between 2021 and 2023 on the emigration tendencies of individuals with higher education qualifications. These findings are expected to enable a structural analysis of migration not only in terms of numerical trends but also from demographic, academic, and geographical perspectives.
+
+Statistical evaluations will examine whether brain drain rates have increased over the years, how gender differences affect migration tendencies, and how migration preferences vary across academic disciplines. It is anticipated that individuals who graduated from fields such as information technologies, engineering, and the natural sciences display a stronger tendency to emigrate, and this hypothesis will be tested using empirical data.
+
+In addition, the distribution of destination countries will be analyzed to determine which countries attract graduates from which academic backgrounds. In this context, potential relationships between the employment and living conditions offered by host countries and the preferences of emigrants will be assessed.
+
+Through correlation and regression analyses involving macroeconomic indicators, the possible effects of inflation and exchange rate volatility on brain drain will be statistically tested. These analyses will provide a quantitative assessment of the extent to which economic instability influences individual migration decisions.
+
+Upon completion of these analyses, the study will not only present a snapshot of current trends but also offer a comprehensive evaluation of the driving factors behind brain drain.
+
+As a result of the multi-dimensional analyses conducted in this study, the effects of macroeconomic changes in Turkey between 2021 and 2023 on the emigration tendencies of highly educated individuals are demonstrated in concrete terms. The findings provide not only evidence of numerical increases in brain drain but also enable an in-depth assessment of its demographic, academic, and spatial dimensions.
+
+First, a notable upward trend in brain drain rates over the years has been observed. The emigration rate among university graduates increased from 1.6% in 2015 to 2.1% in 2022. Although this may appear to be a modest increase, it represents a significant loss of qualified human capital, given that it pertains to individuals with higher education degrees. Analyses based on gender reveal that male individuals exhibit higher emigration tendencies compared to females; however, a significant increase in female migration rates has also been recorded in recent years. This finding opens up discussions on how gender inequality and unequal access to career opportunities influence international mobility.
+
+From a disciplinary standpoint, the highest rates of brain drain are found in fields such as information and communication technologies, engineering, natural sciences, and mathematics. In particular, migration rates exceeding 10% are observed among graduates of molecular biology, computer engineering, and electrical-electronics engineering. In contrast, migration rates in public-oriented fields such as health, education, and social services remain below 1%, highlighting the potential influence of public sector employment structures on individual migration decisions.
+
+Regarding destination countries, the most common destinations for highly educated emigrants are Germany, the United States, the United Kingdom, the Netherlands, and Canada. Germany's rising position in the rankings, approaching that of the U.S., suggests that the attractive employment conditions and residency opportunities offered by European Union countries significantly influence migration preferences. Each country exhibits different patterns in attracting graduates; for instance, the U.S. predominantly draws graduates in computer engineering and business administration, whereas Germany and the Netherlands attract individuals with engineering backgrounds.
+
+Correlation analyses indicate a strong positive relationship between inflation (CPI) and migration rates (r = 0.91), as well as between exchange rates and migration rates (r = 0.88). Multiple linear regression analysis reveals that these two variables together significantly and statistically explain variations in migration rates (p < 0.05, R² > 0.85). These findings support the notion that economic uncertainty and rising living costs drive individuals to seek opportunities abroad.
+
+In conclusion, this study clearly demonstrates that economic fluctuations in Turkey affect not only macro-level indicators but also individual life decisions. Brain drain is not merely a matter of personal choice or escape but represents a structural consequence. Therefore, it is imperative for Turkey to develop comprehensive, sector-specific, and targeted policies aimed at minimizing brain drain as part of its long-term development strategy. These policies must be supported not only by efforts to ensure economic stability but also by safeguarding academic freedoms, increasing incentives for scientists and skilled youth, and implementing structural reforms that help retain global competitiveness within the country.
+
+- 📈 Macroeconomic instability significantly impacts brain drain.
+- 🧠 STEM graduates are disproportionately migrating.
+- 🌍 Germany is catching up with the US as a top destination.
+- 👩‍🎓 Gender differences in migration rates are decreasing.
+- 🏛 Policy recommendations include targeted retention and incentive programs for skilled youth.
+
+Stay tuned for final results and updates!

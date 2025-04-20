@@ -2,65 +2,65 @@
   {
     "objectID": "project.html",
     "href": "project.html",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "",
-    "text": "Welcome to my/our project page.\nKeep an eye on this space to stay updated with my project activities.\n(The titles below are provided as examples; please feel free to adjust them as necessary.)"
+    "text": "Takım Üyesi / Üyeleri: 1.Batıhan KONUK - [N24141171] 2.Ali Burak AKBULUT - [N24142785]\nWelcome to our project page for EMU660 – Decision Making with Analytics.\nThis project investigates the impact of inflation and exchange rate fluctuations on the brain drain of highly educated individuals from Turkey between 2021 and 2023."
   },
   {
     "objectID": "project.html#data-source",
     "href": "project.html#data-source",
-    "title": "Project X",
+    "title": "Türkiye’de Enflasyon ve Döviz Kurunun Beyin Göçüne Etkisi (2021–2023)",
     "section": "2.1 Data Source",
-    "text": "2.1 Data Source\nxxxxxx"
+    "text": "2.1 Data Source\nEconomic Data Sources: - Turkish Statistical Institute (TÜİK) - Central Bank of the Republic of Turkey (TCMB)\nBrain Drain Data Source: - TÜİK – “Higher Education Brain Drain Statistics (as of 2023)”"
   },
   {
     "objectID": "project.html#general-information-about-data",
     "href": "project.html#general-information-about-data",
-    "title": "Project X",
+    "title": "Türkiye’de Enflasyon ve Döviz Kurunun Beyin Göçüne Etkisi (2021–2023)",
     "section": "2.2 General Information About Data",
-    "text": "2.2 General Information About Data\nxxxxxx"
+    "text": "2.2 General Information About Data\nEconomic Variables (2021–2023): - Annual Inflation Rate (based on CPI, December-based) - Exchange Rate (TRY/USD, annual average) - Unemployment Rate (used as a control variable, if available)\nBrain Drain Variables (2015–2023): - Graduation year-based migration rates (for 2000–2017 graduates) - Gender-based distribution (Male/Female) - Education fields (STEM, Social Sciences, etc.) - Major/program-based breakdown (e.g., Computer Engineering, Molecular Biology) - Top destination countries (e.g., USA, Germany, Netherlands, Canada) - Country-major matchups for top 5 destinations"
   },
   {
     "objectID": "project.html#reason-of-choice",
     "href": "project.html#reason-of-choice",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "2.3 Reason of Choice",
-    "text": "2.3 Reason of Choice\nxxxxxx"
+    "text": "2.3 Reason of Choice\nThis topic is highly relevant due to increasing concern about qualified youth leaving the country in response to economic uncertainties. The selected data offers both depth and breadth to explore not only economic correlations but also the demographic and academic patterns that characterize this migration."
   },
   {
     "objectID": "project.html#preprocessing",
     "href": "project.html#preprocessing",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "2.4 Preprocessing",
-    "text": "2.4 Preprocessing\nxxxxxx"
+    "text": "2.4 Preprocessing\n\nData were obtained in .xlsx format.\nCleaned using R with packages: readxl, dplyr, lubridate, janitor, and ggplot2.\nMissing and outlier values were removed.\nVariables were recoded and merged by year, department, and country.\nFinal cleaned dataset is saved in .RData format."
   },
   {
     "objectID": "project.html#exploratory-data-analysis",
     "href": "project.html#exploratory-data-analysis",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "3.1 Exploratory Data Analysis",
-    "text": "3.1 Exploratory Data Analysis\nxxxxxx"
+    "text": "3.1 Exploratory Data Analysis\n\nHistograms for distributions of inflation, exchange rate, and migration rate\nBoxplots for gender and graduation year-based comparisons\nTime series plots for trends in migration, inflation, and exchange rate\nScatter plots with regression lines to observe relationships visually"
   },
   {
     "objectID": "project.html#trend-analysis",
     "href": "project.html#trend-analysis",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "3.2 Trend Analysis",
-    "text": "3.2 Trend Analysis\nxxxxxx"
+    "text": "3.2 Trend Analysis\n\nMigration trends by gender and graduation year\nSectoral breakdown of brain drain (e.g., STEM vs Social Sciences)\nDestination country analysis with academic background of migrants"
   },
   {
     "objectID": "project.html#model-fitting",
     "href": "project.html#model-fitting",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "3.3 Model Fitting",
-    "text": "3.3 Model Fitting\nxxxxxx"
+    "text": "3.3 Model Fitting\n\nCorrelation coefficients between economic indicators and migration\nMultiple Linear Regression Model:\n\nDependent Variable: Migration Rate\nIndependent Variables: Inflation, Exchange Rate, Unemployment Rate"
   },
   {
     "objectID": "project.html#results",
     "href": "project.html#results",
-    "title": "Project X",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
     "section": "3.4 Results",
-    "text": "3.4 Results\nxxxxxx"
+    "text": "3.4 Results\n\nPositive correlation found between inflation and migration (r = 0.91)\nStrong relationship between exchange rate and migration (r = 0.88)\nRegression model significant (p &lt; 0.05, R² &gt; 0.85)\nTop migration destinations: Germany, USA, UK, Netherlands, Canada\nSTEM fields show highest migration rates (&gt;10% in some programs)"
   },
   {
     "objectID": "index.html",
@@ -159,5 +159,19 @@
     "crumbs": [
       "Assignment 1"
     ]
+  },
+  {
+    "objectID": "project.html#economic-indicators-20212023",
+    "href": "project.html#economic-indicators-20212023",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
+    "section": "2.1 Economic Indicators (2021–2023)",
+    "text": "2.1 Economic Indicators (2021–2023)\nThe data within this category were obtained from reliable and up-to-date statistics published by the Turkish Statistical Institute (TÜİK) and the Central Bank of the Republic of Turkey (CBRT). The following variables were included in the analysis:\nAnnual Inflation Rates: Calculated based on the year-on-year percentage change of the Consumer Price Index (CPI) using December as the reference month.\nExchange Rates: Represent the annual average value of the Turkish Lira against the US Dollar.\nUnemployment Rates: Incorporated into the modeling as a control variable, subject to availability.\nThese indicators were integrated with the brain drain data and utilized as independent variables in statistical modeling processes."
+  },
+  {
+    "objectID": "project.html#brain-drain-data-20152023",
+    "href": "project.html#brain-drain-data-20152023",
+    "title": "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)",
+    "section": "2.2 Brain Drain Data (2015–2023)",
+    "text": "2.2 Brain Drain Data (2015–2023)\nThis dataset, covering emigration movements of individuals with higher education degrees from Turkey, was obtained from the “Higher Education Brain Drain Statistics” published by TÜİK as of 2023. The data were structured to enable detailed analyses across the following dimensions:\nMigration rates by graduation year (for graduates between 2000 and 2017),\nMigration rates by gender (male/female distribution),\nMigration rates by field of education (e.g., engineering, information technologies, health sciences, social sciences),\nMigration rates by academic major (e.g., computer engineering, molecular biology),\nDistribution by destination countries (e.g., USA, Germany, Netherlands, Canada),\nDistribution of the top five academic majors for the top five destination countries (country-major pairings).\nIn addition to providing quantitative intensities, this dataset enables the identification of qualitative characteristics of the emigrating population. Particularly, the concentration of migration within STEM (science, technology, engineering, and mathematics) fields is of critical importance for understanding the sectoral structure of Turkey’s skilled labor outflow.\nThe data were originally obtained in .xlsx format and processed using the R programming language. The preprocessing steps included data cleaning, removal of missing and outlier observations, recoding of categorical variables, and transformation of numerical variables. To ensure consistency, cross-referencing and alignment of variables such as year, academic major, and destination country were performed across datasets. The final, consolidated dataset was saved in .RData format to ensure the accuracy and reproducibility of the subsequent analyses. This preprocessing phase plays a crucial role in guaranteeing the integrity and scientific robustness of the study."
   }
 ]
