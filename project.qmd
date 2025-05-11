@@ -75,6 +75,11 @@ This topic is highly relevant due to increasing concern about qualified youth le
 
 The project will combine descriptive and inferential statistical techniques.
 
+library(readxl)
+veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_1.xlsx", sheet = "T1")
+colnames(veri) <- c("Year", "Graduation", "Total", "Male", "Female", "Inflation", "Exchange_Rate")
+
+
 ## 3.1 Exploratory Data Analysis
 
 - Histograms for distributions of inflation, exchange rate, and migration rate
@@ -97,13 +102,267 @@ The project will combine descriptive and inferential statistical techniques.
 
 ## 3.4 Results
 
-- Positive correlation found between inflation and migration (r = 0.91)
-- Strong relationship between exchange rate and migration (r = 0.88)
-- Regression model significant (p < 0.05, R² > 0.85)
-- Top migration destinations: Germany, USA, UK, Netherlands, Canada
-- STEM fields show highest migration rates (>10% in some programs)
+### 3.4.1. Time Series of Male and Female Brain Drain Rates by Year
 
-# 4. Results and Key Takeaways
+veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_1.xlsx", sheet = "T1")
+colnames(veri) <- c("Year", "Graduation", "Total", "Male", "Female", "Inflation", "Exchange_Rate")
+plot(veri$Year, veri$Total, type = "o", col = "blue", ylim = c(min(veri$Female), max(veri$Male)),
+     xlab = "Year", ylab = "Brain Drain Rate", main = "Brain Drain Rates by Year")
+lines(veri$Year, veri$Male, type = "o", col = "green")
+lines(veri$Year, veri$Female, type = "o", col = "red")
+legend("topleft", legend = c("Total", "Male", "Female"),
+       col = c("blue", "green", "red"), lty = 1, pch = 1)
+
+
+The graph illustrates the annual changes in brain drain rates among male and female groups between 2015 and 2023. Both groups exhibit a generally increasing trend, which becomes particularly pronounced starting from 2016. Throughout the period, brain drain rates for males consistently exceed those for females, suggesting a structural difference in migration tendencies between genders. Moreover, this disparity appears to persist over time. In 2022, brain drain rates reach their peak across both groups, followed by a slight decline observed in 2023.
+
+cor(veri[, c("Total", "Male", "Female", "Inflation", "Exchange_Rate")],
+    use = "complete.obs")
+    
+### 3.4.2. Effect of Dollar Currency for Brain Drain
+plot(veri$Exchange_Rate, veri$Total,
+     main = "Brain Drain Rate vs Dollar Currency",
+     xlab = "Dollar Currency (₺)", ylab = "Brain Drain Rate (%)",
+     pch = 19, col = "blue",
+     xlim = c(min(veri$Exchange_Rate), max(veri$Exchange_Rate) * 1.1))  # saga bosluk
+
+abline(lm(Total ~ Exchange_Rate, data = veri), col = "red", lwd = 2)
+
+text(veri$Exchange_Rate, veri$Total,
+     labels = veri$Year, pos = 4, cex = 0.8)
+
+The graph reveals a positive correlation between the depreciation of the Turkish lira against the U.S. dollar and the increase in brain drain rates. While the data from 2015 to 2022 align with this linear trend, the year 2023 deviates from this general pattern, exhibiting a lower-than-expected brain drain rate based on the model. This divergence may indicate that the influence of economic indicators on migration decisions has diminished over time, or that other factors—such as legal regulations, migration policies, or employment opportunities—have become more prominent in shaping emigration behavior.
+
+### 3.4.3. Effect of Inflation for Brain Drain
+plot(veri$Inflation, veri$Total,
+     main = "Brain Drain Rate vs Inflation",
+     xlab = "Inflation (%)", ylab = "Brain Drain Rate (%)",
+     pch = 19, col = "darkgreen",
+     xlim = c(min(veri$Inflation), max(veri$Inflation) * 1.1))  # saga bosluk
+
+abline(lm(Total ~ Inflation, data = veri), col = "orange", lwd = 2)
+
+text(veri$Inflation, veri$Total,
+     labels = veri$Year, pos = 4, cex = 0.8)
+     
+The graph illustrates a positive linear relationship between inflation rates and brain drain rates in Turkey over the period from 2015 to 2023. From 2015 through 2022, rising inflation appears to correspond with increased emigration, suggesting that inflation may act as an economic push factor influencing individuals’ decisions to migrate. However, the data point for 2023 deviates from this trend: despite historically high inflation levels, the brain drain rate does not increase proportionally and appears to plateau. This deviation may indicate that the effect of inflation on migration decisions reaches a saturation point or is increasingly mediated by other factors, such as social dynamics, policy changes, or individual opportunity structures.
+
+### 3.4.4. Data normalized Over Z-Scores for Dollar Currency, Inflation, Brain Drain Rate 
+library(ggplot2)
+
+veri_z <- data.frame(
+  Year = rep(veri$Year, times = 4),
+  Degisken = rep(c("Male Brain Drain Rate", "Female Brain Drain Rate", "Inflation", "Dollar Currency"), each = nrow(veri)),
+  Z_Skor = c(
+    scale(veri$Male, center = TRUE, scale = TRUE),
+    scale(veri$Female, center = TRUE, scale = TRUE),
+    scale(veri$Inflation, center = TRUE, scale = TRUE),
+    scale(veri$Exchange_Rate, center = TRUE, scale = TRUE)
+  )
+)
+
+ggplot(veri_z, aes(x = Year, y = Z_Skor, color = Degisken, linetype = Degisken)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  labs(title = "Time Series (Normalized)",
+       x = "Year", y = "Z-score") +
+  theme_minimal(base_size = 13) +
+  theme(legend.title = element_blank())
+
+The normalized time series presented in the graph indicate a strong relationship between the deterioration of economic indicators in Turkey and trends in brain drain. Following 2018, a parallel upward movement is observed between the rising exchange rate and inflation levels and the increasing brain drain rates for both males and females. However, despite economic indicators reaching record-high levels by 2023, the slight decline in brain drain rates suggests that the influence of economic factors on migration decisions may be diminishing, or that other structural determinants have begun to play a more dominant role in shaping emigration behavior.
+
+
+### 3.4.5. Brain Drain Rate by Fields of Education and Training
+veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_2.xlsx", sheet = "T2")
+
+colnames(veri)[1] <- "Alan"
+veri$Alan <- trimws(gsub("\n", "", veri$Alan))
+
+veri_2021 <- data.frame(Alan = veri$Alan, Oran = veri$`2021`, Yil = "2021")
+veri_2022 <- data.frame(Alan = veri$Alan, Oran = veri$`2022`, Yil = "2022")
+veri_2023 <- data.frame(Alan = veri$Alan, Oran = veri$`2023`, Yil = "2023")
+
+veri_long <- rbind(veri_2021, veri_2022, veri_2023)
+
+g <- ggplot(veri_long, aes(x = reorder(Alan, Oran), y = Oran, fill = Yil)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8)) +
+  geom_text(aes(label = paste0(round(Oran, 1), "%")),
+            position = position_dodge(width = 0.8),
+            hjust = -0.1, size = 3.2, color = "black") +
+  coord_flip() +
+  labs(title = "Brain Drain Rate by Fields of Education and Training (2021-2023)",
+       x = "Fields of Education and Training", y = "Brain Drain Rate (%)") +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.background = element_rect(fill = "white"),
+    panel.background = element_rect(fill = "white"),
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    axis.title = element_text(color = "black"),
+    plot.title = element_text(color = "black", face = "bold"),
+    legend.title = element_blank(),
+    legend.text = element_text(color = "black")
+  )
+
+ggsave("egitim_alanlari_beyin_gocu_beyaz_yazi.png", plot = g, width = 12, height = 8, dpi = 300, bg = "white")
+
+g
+
+This comparative visualization demonstrates that brain drain patterns vary significantly across educational fields, with technology and engineering disciplines displaying the highest mobility. The persistence of these trends over three years suggests structural drivers behind the migration of skilled professionals, particularly in sectors where global digitalization and industrial modernization demand high-level technical talent. In contrast, fields tied to national systems—such as education, health, and agriculture—exhibit lower migration tendencies. While most sectors show increased mobility from 2021 to 2022, the relative plateauing in 2023 may indicate emerging limitations or saturation effects, warranting further investigation into policy, economic, and social dynamics shaping skilled emigration.
+
+
+### 3.4.6. Brain Drain Rate by Top 10 Department
+veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_3.xlsx", sheet = "T3")
+
+colnames(veri)[1] <- "Bolum"
+
+veri$Bolum <- sub("\\s*\\n.*", "", veri$Bolum)
+
+veri$`2021` <- as.numeric(veri$`2021`)
+veri$`2022` <- as.numeric(veri$`2022`)
+veri$`2023` <- as.numeric(veri$`2023`)
+veri <- na.omit(veri)
+
+top10_bolumler <- veri[order(-veri$`2023`), "Bolum"][1:10, , drop = TRUE]
+veri_top10 <- veri[veri$Bolum %in% top10_bolumler, ]
+
+
+veri_2021 <- data.frame(Bolum = veri_top10$Bolum, Oran = veri_top10$`2021`, Yil = "2021")
+veri_2022 <- data.frame(Bolum = veri_top10$Bolum, Oran = veri_top10$`2022`, Yil = "2022")
+veri_2023 <- data.frame(Bolum = veri_top10$Bolum, Oran = veri_top10$`2023`, Yil = "2023")
+veri_coklu <- rbind(veri_2021, veri_2022, veri_2023)
+
+g2 <- ggplot(veri_coklu, aes(x = reorder(Bolum, Oran), y = Oran, fill = Yil)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8)) +
+  geom_text(aes(label = paste0(round(Oran, 1), "%")),
+            position = position_dodge(width = 0.8),
+            hjust = -0.1, color = "black", size = 3.5) +
+  coord_flip() +
+  labs(title = "2021-2023 Brain Drain Rate by Top 10 Department",
+       x = "Department", y = "Brain Drain Rate (%)") +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.background = element_rect(fill = "white"),
+    panel.background = element_rect(fill = "white"),
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    axis.title = element_text(color = "black"),
+    plot.title = element_text(color = "black", face = "bold"),
+    legend.title = element_blank(),
+    legend.text = element_text(color = "black")
+  )
+
+ggsave("top10_bolum_3yil_karsilastirma_etiketli.png", plot = g2, width = 11, height = 6, dpi = 300, bg = "white")
+
+g2
+
+The graph illustrates that brain drain rates among university graduates in Turkey between 2021 and 2023 vary significantly across academic disciplines, with the highest rates observed in molecular biology and genetics, bioengineering, and several branches of engineering. These fields are characterized by strong international demand due to their relevance in high-tech industries and global research agendas, particularly in areas such as biotechnology, software, and data science. While molecular biology and genetics show a gradual decline in migration rates over the three-year period—possibly due to saturation or increasing barriers in destination countries—other fields such as software engineering demonstrate a steady rise, likely driven by digitalization and global labor shortages in IT. Overall, the findings suggest that brain drain is influenced not only by economic conditions but also by the international portability of academic qualifications, sectoral innovation intensity, and the global demand for specialized skills.
+
+
+### 3.4.7. Brain Drain Rates Distributed Across Countries by Year
+library(dplyr)
+
+veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_4.xlsx", sheet = "T4")
+
+colnames(veri)[1] <- "Ulke"
+veri$`2021` <- as.numeric(veri$`2021`)
+veri$`2022` <- as.numeric(veri$`2022`)
+veri$`2023` <- as.numeric(veri$`2023`)
+veri <- na.omit(veri)
+
+veri_2021 <- data.frame(Ulke = veri$Ulke, Oran = veri$`2021`, Yil = "2021")
+veri_2022 <- data.frame(Ulke = veri$Ulke, Oran = veri$`2022`, Yil = "2022")
+veri_2023 <- data.frame(Ulke = veri$Ulke, Oran = veri$`2023`, Yil = "2023")
+veri_grafik <- rbind(veri_2021, veri_2022, veri_2023)
+
+g_ulke <- ggplot(veri_grafik, aes(x = reorder(Ulke, Oran), y = Oran, fill = Yil)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8)) +
+  geom_text(aes(label = round(Oran, 1)),
+            position = position_dodge(width = 0.8),
+            hjust = -0.1, color = "black", size = 3.5) +
+  coord_flip() +
+  labs(title = "Brain Drain Rates Distributed Across Countries by Year",
+       x = "Country", y = "Brain Drain Rate (%)") +
+  theme_minimal(base_size = 12) +
+  theme(
+    plot.background = element_rect(fill = "white"),
+    panel.background = element_rect(fill = "white"),
+    panel.grid = element_blank(),
+    axis.text = element_text(color = "black"),
+    axis.title = element_text(color = "black"),
+    plot.title = element_text(color = "black", face = "bold"),
+    legend.title = element_blank(),
+    legend.text = element_text(color = "black")
+  )
+
+ggsave("ulkelere_gore_beyin_gocu_etiketli.png", plot = g_ulke, width = 12, height = 8, dpi = 300, bg = "white")
+
+g_ulke
+
+browseURL("ulkelere_gore_beyin_gocu_etiketli.png")
+
+This graph illustrates that brain drain from Turkey has historically been concentrated in traditional destination countries such as the United States and Germany. However, over the past three years, the intensity of migration to these countries has gradually declined. Notably, by 2023, the increasing share of “other” countries indicates a diversification in migration preferences, suggesting that skilled individuals are beginning to consider a broader range of destinations. While European countries maintain a relatively stable level of attractiveness, most do not exhibit significant upward or downward trends. This distribution highlights that emigration dynamics are shaped not only by economic factors but also by structural elements such as political climate, cultural affinity, and visa regimes.
+
+
+### 3.4.8. Brain Drain Rate by Country and Departments
+
+veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_5.xlsx", sheet = "T5")
+
+colnames(veri)[1:5] <- c("Ulke", "Bolum", "Y2021", "Y2022", "Y2023")
+
+veri$Ulke <- zoo::na.locf(veri$Ulke)
+
+veri$Bolum <- gsub("_x000D_|\\n", " ", veri$Bolum)
+veri$Bolum <- trimws(veri$Bolum)
+veri$Bolum <- gsub(" ([A-Z][a-z].*)$", "\n\\1", veri$Bolum)  # Ingilizce kismi alt satira al
+
+veri$Y2021 <- as.numeric(veri$Y2021)
+veri$Y2022 <- as.numeric(veri$Y2022)
+veri$Y2023 <- as.numeric(veri$Y2023)
+
+veri <- veri[!is.na(veri$Bolum), ]
+
+veri_long <- rbind(
+  data.frame(Ulke = veri$Ulke, Bolum = veri$Bolum, Yil = "2021", Oran = veri$Y2021),
+  data.frame(Ulke = veri$Ulke, Bolum = veri$Bolum, Yil = "2022", Oran = veri$Y2022),
+  data.frame(Ulke = veri$Ulke, Bolum = veri$Bolum, Yil = "2023", Oran = veri$Y2023)
+)
+
+veri_long$Ulke <- gsub("Amerika Birlesik Devletleri United States of America", "ABD (USA)", veri_long$Ulke)
+
+g3 <- ggplot(veri_long, aes(x = reorder(Bolum, Oran), y = Oran, fill = Yil)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8)) +
+  geom_text(aes(label = paste0(round(Oran, 1), "%")),
+            position = position_dodge(width = 0.8),
+            vjust = 0.5, size = 4, color = "black") +
+  coord_flip() +
+  facet_wrap(~ Ulke, scales = "free_y") +
+  labs(title = "Brain Drain Rate by Country and Departments (2021–2023)",
+       x = "Department", y = "Brain Drain Rate (%)") +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.background = element_rect(fill = "white"),
+    panel.background = element_rect(fill = "white"),
+    panel.grid = element_blank(),
+    axis.text.x = element_text(color = "black", size = 12),
+    axis.text.y = element_text(color = "black", size = 11, lineheight = 0.9),
+    axis.title = element_text(color = "black", size = 14),
+    plot.title = element_text(color = "black", size = 16, face = "bold"),
+    legend.title = element_blank(),
+    legend.text = element_text(color = "black", size = 12),
+    strip.text = element_text(color = "black", size = 13, face = "bold")
+  )
+
+ggsave("ulke_bolum_facet_final.png", plot = g3, width = 20, height = 12, dpi = 300, bg = "white")
+
+g3
+
+browseURL("ulke_bolum_facet_final.png")
+
+The graph reveals that brain drain from Turkey varies significantly across academic disciplines and destination countries. Computer engineering stands out with the highest emigration rates across all countries, which is directly associated with global trends in digitalization, the expanding software industry, and the growing demand for skilled professionals in the technology sector. The Netherlands, in particular, exhibits the highest rate in this field compared to other countries. Germany emerges as a key destination for traditional engineering disciplines such as mechanical and electrical engineering, whereas Canada has shown a notable increase in emigration specifically in computer engineering. Overall, emigration tendencies are more pronounced among engineering disciplines, while fields rooted in the social sciences, such as business administration and economics, display lower and more stable migration rates over time. These differences reflect the demand profiles of host countries for high-skilled labor and the impact of international talent policies.
+
+
+# 4. Conclusion
 
 The analyses to be conducted in the subsequent stages of this study aim to uncover the impact of macroeconomic developments observed in Turkey between 2021 and 2023 on the emigration tendencies of individuals with higher education qualifications. These findings are expected to enable a structural analysis of migration not only in terms of numerical trends but also from demographic, academic, and geographical perspectives.
 
