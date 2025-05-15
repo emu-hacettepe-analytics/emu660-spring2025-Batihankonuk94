@@ -15,7 +15,7 @@ library(zoo)
 
 Welcome to our project page for EMU660 – Decision Making with Analytics.
 
-This project investigates the impact of inflation and exchange rate fluctuations on the brain drain of highly educated individuals from Turkey between 2021 and 2023.
+This project investigates the impact of inflation and exchange rate fluctuations on the brain drain of highly educated individuals from Turkey between 2015 and 2023.
 
 # 1. Project Overview and Scope
 
@@ -45,7 +45,7 @@ Exchange Rates: Represent the annual average value of the Turkish Lira against t
 
 This dataset, covering emigration movements of individuals with higher education degrees from Turkey, was obtained from the “Higher Education Brain Drain Statistics” published by TÜİK as of 2023. The data were structured to enable detailed analyses across the following dimensions:
 
-Brain drain rates by graduation year (for graduates between 2000 and 2017),
+Brain drain rates by graduation year (for graduates between 2008 and 2017),
 
 Brain drain rates by gender (male/female distribution),
 
@@ -69,7 +69,7 @@ The project will combine descriptive and inferential statistical techniques.
 
 ```{r}
 veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_1.xlsx", sheet = "T1")
-colnames(veri) <- c("Year", "Graduation", "Total", "Male", "Female", "Inflation", "Exchange_Rate")
+colnames(veri) <- c("Year", "Graduation", "Total", "Male", "Female", "Inflation", "Exchange_Rate", main = "Correlation Matrix")
 ```
 
 ## 3.1 Results
