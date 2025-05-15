@@ -1,5 +1,5 @@
 ---
-title: "An Empirical Analysis of the Effects of Inflation and Exchange Rate Volatility on Brain Drain in Turkey (2021–2023)"
+title: "An Empirical Analysis of Brain Drain in Turkey (2015–2023)"
 ---
 
 Takım Üyesi / Üyeleri: 1.Batıhan KONUK - \[N24141171\] 2.Ali Burak AKBULUT - \[N24142785\]
@@ -19,7 +19,7 @@ This project investigates the impact of inflation and exchange rate fluctuations
 
 # 1. Project Overview and Scope
 
-The primary objective of this study is to uncover the impact of high inflation rates and exchange rate fluctuations observed in Turkey between 2021 and 2023 on the emigration tendencies of individuals with higher education qualifications, through the use of statistical and visual analytical techniques. Grounded in indicators that point to a growing trend of emigration among young, highly skilled individuals with career aspirations, this research seeks to examine the economic motivations underlying the migration decisions of this demographic. Within this framework, the study aims to analyze to what extent macroeconomic instability shapes individual migration choices through empirical methods.
+The primary objective of this study is to uncover the impact of high inflation rates and exchange rate fluctuations observed in Turkey on the emigration tendencies of individuals with higher education qualifications, through the use of statistical and visual analytical techniques. Grounded in indicators that point to a growing trend of emigration among young, highly skilled individuals with career aspirations, this research seeks to examine the economic motivations underlying the migration decisions of this demographic. Within this framework, the study aims to analyze to what extent macroeconomic instability shapes individual migration choices through empirical methods.
 
 Rather than limiting the analysis to simple correlations between economic indicators and migration rates, this research seeks to address the multifaceted nature of the brain drain phenomenon. Accordingly, a wide range of demographic, socio-cultural, and academic variables—such as age groups, gender distributions, academic disciplines, graduation cohorts, and destination countries—are incorporated to provide a comprehensive exploration of brain drain dynamics. In doing so, the project transcends narrowly defined causal relationships based solely on economic variables and aims to offer a broader perspective on the structural dimensions of brain drain and its differential impact across population groups.
 
