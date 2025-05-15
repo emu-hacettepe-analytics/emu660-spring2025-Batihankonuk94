@@ -41,7 +41,6 @@ Annual Inflation Rates: Calculated based on the year-on-year percentage change o
 
 Exchange Rates: Represent the annual average value of the Turkish Lira against the US Dollar.
 
-
 ## 2.2 Brain Drain Data (2015–2023)
 
 This dataset, covering emigration movements of individuals with higher education degrees from Turkey, was obtained from the “Higher Education Brain Drain Statistics” published by TÜİK as of 2023. The data were structured to enable detailed analyses across the following dimensions:
@@ -68,17 +67,14 @@ This topic is highly relevant due to increasing concern about qualified youth le
 
 The project will combine descriptive and inferential statistical techniques.
 
-
 ```{r}
 veri <- read_excel("C:/Users/batihan.konuk/Documents/GitHub/emu660-spring2025-Batihankonuk94/Data/Data_1.xlsx", sheet = "T1")
 colnames(veri) <- c("Year", "Graduation", "Total", "Male", "Female", "Inflation", "Exchange_Rate")
 ```
 
-
 ## 3.1 Results
 
 ### 3.1.1. Time Series of Male and Female Brain Drain Rates by Year
-
 
 ```{r}
 plot(veri$Year, veri$Total, type = "o", col = "blue", ylim = c(min(veri$Female), max(veri$Male)), xlab = "Year", ylab = "Brain Drain Rate", main = "Brain Drain Rates by Year")
@@ -88,6 +84,7 @@ legend("topleft", legend = c("Total", "Male", "Female"), col = c("blue", "green"
 ```
 
 The graph illustrates the annual changes in brain drain rates among male and female groups between 2015 and 2023. Both groups exhibit a generally increasing trend, which becomes particularly pronounced starting from 2016. Throughout the period, brain drain rates for males consistently exceed those for females, suggesting a structural difference in migration tendencies between genders. Moreover, this disparity appears to persist over time. In 2022, brain drain rates reach their peak across both groups, followed by a slight decline observed in 2023.
+
 ```{r}
 cor(veri[, c("Total", "Male", "Female", "Inflation", "Exchange_Rate")], use = "complete.obs")
 ```
@@ -258,4 +255,3 @@ The graph reveals that brain drain from Turkey varies significantly across acade
 # 4. Conclusion
 
 The analysis provides clear evidence that economic instability in Turkey between 2021 and 2023 has had a significant impact on the brain drain of highly educated individuals. Key drivers include inflation, exchange rate volatility, and global demand for STEM graduates. Country-level and department-level breakdowns suggest migration is shaped not only by economic push factors but also by international policy and sectoral talent demand. These insights inform actionable policy directions to retain domestic human capital and design targeted incentive strategies for high-skilled youth.
-
